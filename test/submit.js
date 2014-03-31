@@ -29,8 +29,7 @@ test('can add change event', function (assert) {
         some: 'data'
     }))
 
-    var ev = Event('keyup')
-    ev.keyCode = 13
+    var ev = Event('keyup', { keyCode: 13 })
     elem.childNodes[0].dispatchEvent(ev)
 
     setImmediate(function () {
@@ -61,8 +60,7 @@ test('can add change (function) event', function (assert) {
         some: 'data'
     }))
 
-    var ev = Event('keyup')
-    ev.keyCode = 13
+    var ev = Event('keyup', { keyCode: 13 })
     elem.childNodes[0].dispatchEvent(ev)
 
     setImmediate(function () {
