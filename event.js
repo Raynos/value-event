@@ -13,5 +13,9 @@ function SinkEventHandler(sink, data) {
 SinkEventHandler.prototype.handleEvent = handleEvent
 
 function handleEvent(ev) {
-    this.sink.write(this.data)
+    if (typeof this.sink === 'function') {
+        this.sink(this.data)
+    } else {
+        this.sink.write(this.data)
+    }
 }

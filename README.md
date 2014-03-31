@@ -23,19 +23,17 @@ Create DOM event handlers that write to sinks
 
 ```js
 var event = require('value-event/event')
-var sink = {
-  write: function (data) {
-    console.log('data', data)
-  }
+var listener = function (data) {
+  console.log('data', data)
 }
 
 var elem = document.getElementById('foo')
 elem.querySelector('div.name')
-  .addEventListener('click', event(sink, {
+  .addEventListener('click', event(listener, {
     clicked: true
   }))
 elem.querySelector('input.name')
-  .addEventListener('keypress', event(sink, {
+  .addEventListener('keypress', event(listener, {
     changed: true
   }))
 ```
@@ -50,16 +48,14 @@ elem.querySelector('input.name')
 
 ```js
 var changeEvent = require('value-event/change')
-var sink = {
-  write: function (data) {
-    // currentValues is { 'foo': 'bar' }
-    console.log('data', data.changed, data.currentValue)
-  }
+var listener = function (data) {
+  // currentValues is { 'foo': 'bar' }
+  console.log('data', data.changed, data.currentValue)
 }
 
 var elem = document.getElementById('my-app')
 elem.querySelector('input.name')
-  .addEventListener('keypress', changeEvent(sink, {
+  .addEventListener('keypress', changeEvent(listener, {
     changed: true
   }))
 ```

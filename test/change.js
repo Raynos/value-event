@@ -35,6 +35,38 @@ test('can add change event', function (assert) {
     setImmediate(function () {
         assert.equal(values.length, 1)
         assert.equal(values[0].some, 'data')
+        assert.equal(values[0].currentValue.foo, 'bar')
+
+        document.body.removeChild(elem)
+        assert.end()
+    })
+})
+
+test('can add change (function) event', function (assert) {
+    var elem = h('div', null, [
+        h('input', {
+            name: 'foo',
+            value: 'bar',
+            type: 'text'
+        })
+    ])
+    document.body.appendChild(elem)
+
+    var values = []
+    var sink = function (data) {
+        values.push(data)
+    }
+    elem.addEventListener('keyup', changeEvent(sink, {
+        some: 'data'
+    }))
+
+    var ev = Event('keyup')
+    elem.childNodes[0].dispatchEvent(ev)
+
+    setImmediate(function () {
+        assert.equal(values.length, 1)
+        assert.equal(values[0].some, 'data')
+        assert.equal(values[0].currentValue.foo, 'bar')
 
         document.body.removeChild(elem)
         assert.end()

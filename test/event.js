@@ -38,3 +38,27 @@ test('can add event', function (assert) {
         assert.end()
     })
 })
+
+test('can add (function) event', function (assert) {
+    var elem = h('div')
+    document.body.appendChild(elem)
+
+    var values = []
+    var sink = function (data) {
+        values.push(data)
+    }
+    elem.addEventListener('click', event(sink, {
+        some: 'data'
+    }))
+
+    var ev = Event('click')
+    elem.dispatchEvent(ev)
+
+    setImmediate(function () {
+        assert.equal(values.length, 1)
+        assert.equal(values[0].some, 'data')
+
+        document.body.removeChild(elem)
+        assert.end()
+    })
+})
