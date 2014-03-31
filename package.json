@@ -16,10 +16,15 @@
     "url": "https://github.com/Raynos/value-event/issues",
     "email": "raynos2@gmail.com"
   },
-  "dependencies": {},
+  "dependencies": {
+    "dom-walk": "0.0.1",
+    "form-data-set": "^0.3.2",
+    "xtend": "^2.2.0"
+  },
   "devDependencies": {
     "event-sinks": "^2.0.1",
     "global": "^3.0.0",
+    "istanbul": "^0.2.6",
     "synthetic-dom-events": "^0.2.0",
     "tap-spec": "^0.1.8",
     "tape": "~1.0.2"

@@ -40,6 +40,30 @@ elem.querySelector('input.name')
   }))
 ```
 
+## Example (change)
+
+```html
+<div id='my-app'>
+  <input name='foo' value='bar' />
+</div>
+```
+
+```js
+var changeEvent = require('value-event/change')
+var sink = {
+  write: function (data) {
+    // currentValues is { 'foo': 'bar' }
+    console.log('data', data.changed, data.currentValue)
+  }
+}
+
+var elem = document.getElementById('my-app')
+elem.querySelector('input.name')
+  .addEventListener('keypress', changeEvent(sink, {
+    changed: true
+  }))
+```
+
 ## Installation
 
 `npm install value-event`

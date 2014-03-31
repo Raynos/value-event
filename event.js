@@ -10,8 +10,8 @@ function SinkEventHandler(sink, data) {
     this.data = data
 }
 
+SinkEventHandler.prototype.handleEvent = handleEvent
+
 function handleEvent(ev) {
     this.sink.write(this.data)
 }
-
-SinkEventHandler.prototype.handleEvent = handleEvent
