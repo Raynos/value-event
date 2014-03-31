@@ -61,7 +61,7 @@ var listener = function (data) {
 }
 
 var elem = document.getElementById('my-app')
-elem.querySelector('input.name')
+elem
   .addEventListener('keypress', changeEvent(listener, {
     changed: true
   }))
@@ -90,8 +90,35 @@ var listener = function (data) {
 }
 
 var elem = document.getElementById('my-app')
-elem.querySelector('input.name')
+elem
   .addEventListener('keypress', submitEvent(listener, {
+    changed: true
+  }))
+```
+
+## Example (value)
+
+The value event happens whenever the event listener fires.
+It attaches a `currentValue` just like `'submit'` and `'change'`
+except it doesn't have special semantics of what's a valid
+event.
+
+```html
+<div id='my-app'>
+  <input name='foo' value='bar' />
+</div>
+```
+
+```js
+var valueEvent = require('value-event/value')
+var listener = function (data) {
+  // currentValues is { 'foo': 'bar' }
+  console.log('data', data.changed, data.currentValue)
+}
+
+var elem = document.getElementById('my-app')
+elem.querySelector('input.name')
+  .addEventListener('blur', valueEvent(listener, {
     changed: true
   }))
 ```
