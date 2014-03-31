@@ -2,11 +2,11 @@ var extend = require('xtend')
 
 var getFormData = require('./lib/get-form-data.js')
 
-module.exports = ValueSinkHandler
+module.exports = ChangeSinkHandler
 
-function ValueSinkHandler(sink, data) {
-    if (!(this instanceof ValueSinkHandler)) {
-        return new ValueSinkHandler(sink, data)
+function ChangeSinkHandler(sink, data) {
+    if (!(this instanceof ChangeSinkHandler)) {
+        return new ChangeSinkHandler(sink, data)
     }
 
     this.sink = sink
@@ -15,7 +15,7 @@ function ValueSinkHandler(sink, data) {
     this.id = sink.id
 }
 
-ValueSinkHandler.prototype.handleEvent = handleEvent
+ChangeSinkHandler.prototype.handleEvent = handleEvent
 
 function handleEvent(ev) {
     var target = ev.target

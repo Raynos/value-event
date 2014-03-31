@@ -40,6 +40,13 @@ elem.querySelector('input.name')
 
 ## Example (change)
 
+The cahnge event happens when form elements change
+
+For example:
+
+ - someone types a character in an input field
+ - someone checks or unchecks a checkbox
+
 ```html
 <div id='my-app'>
   <input name='foo' value='bar' />
@@ -56,6 +63,35 @@ var listener = function (data) {
 var elem = document.getElementById('my-app')
 elem.querySelector('input.name')
   .addEventListener('keypress', changeEvent(listener, {
+    changed: true
+  }))
+```
+
+## Example (submit)
+
+The submit event happens when form elements get submitted.
+
+For example:
+
+ - a button gets clicked
+ - someone hits ENTER in an input field
+
+```html
+<div id='my-app'>
+  <input name='foo' value='bar' />
+</div>
+```
+
+```js
+var submitEvent = require('value-event/submit')
+var listener = function (data) {
+  // currentValues is { 'foo': 'bar' }
+  console.log('data', data.changed, data.currentValue)
+}
+
+var elem = document.getElementById('my-app')
+elem.querySelector('input.name')
+  .addEventListener('keypress', submitEvent(listener, {
     changed: true
   }))
 ```
