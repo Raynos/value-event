@@ -1,0 +1,54 @@
+{
+  "name": "value-event",
+  "version": "0.1.0",
+  "description": "Create DOM event handlers that write to sinks",
+  "keywords": [],
+  "author": "Raynos <raynos2@gmail.com>",
+  "repository": "git://github.com/Raynos/value-event.git",
+  "main": "index",
+  "homepage": "https://github.com/Raynos/value-event",
+  "contributors": [
+    {
+      "name": "Raynos"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Raynos/value-event/issues",
+    "email": "raynos2@gmail.com"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "event-sinks": "^2.0.1",
+    "global": "^3.0.0",
+    "synthetic-dom-events": "^0.2.0",
+    "tap-spec": "^0.1.8",
+    "tape": "~1.0.2"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/Raynos/value-event/raw/master/LICENSE"
+    }
+  ],
+  "scripts": {
+    "test": "node ./test/index.js | tap-spec",
+    "cover": "istanbul cover --report none --print detail ./test/index.js",
+    "view-cover": "istanbul report html && google-chrome ./coverage/index.html"
+  },
+  "testling": {
+    "files": "test/index.js",
+    "browsers": [
+      "ie/8..latest",
+      "firefox/16..latest",
+      "firefox/nightly",
+      "chrome/22..latest",
+      "chrome/canary",
+      "opera/12..latest",
+      "opera/next",
+      "safari/5.1..latest",
+      "ipad/6.0..latest",
+      "iphone/6.0..latest",
+      "android-browser/4.2..latest"
+    ]
+  }
+}
