@@ -22,7 +22,8 @@ function handleEvent(ev) {
 
     var isValid =
         (ev.type === 'change' && target.type === 'checkbox') ||
-        (ev.type === 'keyup' && target.type === 'text')
+        (ev.type === 'keyup' && target.type === 'text') ||
+        (ev.type === 'change' && target.type === 'range')
 
     if (!isValid) {
         return
