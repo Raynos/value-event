@@ -56,8 +56,7 @@ For example:
 ```js
 var changeEvent = require('value-event/change')
 var listener = function (data) {
-  // currentValues is { 'foo': 'bar' }
-  console.log('data', data.changed, data.currentValue)
+  console.log('data', data.changed, data.foo)
 }
 
 var elem = document.getElementById('my-app')
@@ -85,8 +84,7 @@ For example:
 ```js
 var submitEvent = require('value-event/submit')
 var listener = function (data) {
-  // currentValues is { 'foo': 'bar' }
-  console.log('data', data.changed, data.currentValue)
+  console.log('data', data.changed, data.foo)
 }
 
 var elem = document.getElementById('my-app')
@@ -99,7 +97,7 @@ elem
 ## Example (value)
 
 The value event happens whenever the event listener fires.
-It attaches a `currentValue` just like `'submit'` and `'change'`
+It attaches input values just like `'submit'` and `'change'`
 except it doesn't have special semantics of what's a valid
 event.
 
@@ -113,7 +111,7 @@ event.
 var valueEvent = require('value-event/value')
 var listener = function (data) {
   // currentValues is { 'foo': 'bar' }
-  console.log('data', data.changed, data.currentValue)
+  console.log('data', data.changed, data.foo)
 }
 
 var elem = document.getElementById('my-app')

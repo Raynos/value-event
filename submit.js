@@ -35,7 +35,7 @@ function handleEvent(ev) {
     }
 
     var value = getFormData(ev.currentTarget)
-    var data = extend(this.data, { currentValue: value })
+    var data = extend(value, this.data)
 
     if (typeof this.sink === 'function') {
         this.sink(data)

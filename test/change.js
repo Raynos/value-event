@@ -35,7 +35,7 @@ test('can add change event', function (assert) {
     setImmediate(function () {
         assert.equal(values.length, 1)
         assert.equal(values[0].some, 'data')
-        assert.equal(values[0].currentValue.foo, 'bar')
+        assert.equal(values[0].foo, 'bar')
 
         document.body.removeChild(elem)
         assert.end()
@@ -66,7 +66,7 @@ test('can add change (function) event', function (assert) {
     setImmediate(function () {
         assert.equal(values.length, 1)
         assert.equal(values[0].some, 'data')
-        assert.equal(values[0].currentValue.foo, 'bar')
+        assert.equal(values[0].foo, 'bar')
 
         document.body.removeChild(elem)
         assert.end()
