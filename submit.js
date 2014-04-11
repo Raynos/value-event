@@ -1,6 +1,5 @@
 var extend = require('xtend')
-
-var getFormData = require('./lib/get-form-data.js')
+var getFormData = require('form-data-set/element')
 
 var ENTER = 13
 
