@@ -25,7 +25,7 @@ function handleEvent(ev) {
         (ev.type === 'click' && target.tagName === 'BUTTON') ||
         (
             (target.type === 'text' || target.tagName === 'TEXTAREA') &&
-            (ev.keyCode === ENTER && !ev.shiftKey && ev.type === 'keydown')
+            (ev.keyCode === ENTER && !ev.shiftKey && ev.type === 'input')
         )
 
     if (!isValid) {
