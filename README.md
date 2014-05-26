@@ -10,7 +10,7 @@
 
 <!-- [![browser support][11]][12] -->
 
-Create DOM event handlers that write to sinks
+Create DOM event handlers that write to listeners
 
 ## Example (event)
 
