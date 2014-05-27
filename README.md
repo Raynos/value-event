@@ -61,7 +61,7 @@ var listener = function (data) {
 
 var elem = document.getElementById('my-app')
 elem
-  .addEventListener('keypress', changeEvent(listener, {
+  .addEventListener('input', changeEvent(listener, {
     changed: true
   }))
 ```
