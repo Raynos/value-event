@@ -23,6 +23,7 @@ function handleEvent(ev) {
 
     var isValid =
         (ev.type === 'click' && target.tagName === 'BUTTON') ||
+        (ev.type === 'click' && target.type === 'submit') ||
         (
             (target.type === 'text' || target.tagName === 'TEXTAREA') &&
             (ev.keyCode === ENTER && !ev.shiftKey && ev.type === 'keydown')
