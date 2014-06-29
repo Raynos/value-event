@@ -1,4 +1,4 @@
-var document = require("global/document")
+var document = require('global/document')
 
 module.exports = h
 

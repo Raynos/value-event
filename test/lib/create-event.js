@@ -1,4 +1,4 @@
-var DOMEvent = require("synthetic-dom-events")
+var DOMEvent = require('synthetic-dom-events')
 
 module.exports = createEvent
 

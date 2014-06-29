@@ -1,9 +1,8 @@
-var EventSinks = require('event-sinks/geval')
 var document = require('global/document')
 var test = require('tape')
 var setImmediate = require('timers').setImmediate
 
-var Event = require('./lib/create-event.js')
+// var Event = require('./lib/create-event.js')
 var h = require('./lib/h.js')
 var changeEvent = require('../change.js')
 
