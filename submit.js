@@ -25,8 +25,8 @@ function handleEvent(ev) {
         (ev.type === 'click' && target.tagName === 'BUTTON') ||
         (ev.type === 'click' && target.type === 'submit') ||
         (
-            (target.type === 'text' || target.tagName === 'TEXTAREA') &&
-            (ev.keyCode === ENTER && !ev.shiftKey && ev.type === 'keydown')
+            (target.type === 'text') &&
+            (ev.keyCode === ENTER && ev.type === 'keydown')
         )
 
     // prevent forms form refreshing page
