@@ -25,11 +25,11 @@ test('can add change event', function (assert) {
     input.events.someEvent(function (data) {
         values.push(data)
     })
-    elem.addEventListener('keyup', submitEvent(sink, {
+    elem.addEventListener('keydown', submitEvent(sink, {
         some: 'data'
     }))
 
-    var ev = Event('keyup', { keyCode: 13 })
+    var ev = Event('keydown', { keyCode: 13 })
     elem.childNodes[0].dispatchEvent(ev)
 
     setImmediate(function () {
@@ -56,11 +56,11 @@ test('can add change (function) event', function (assert) {
     var sink = function (data) {
         values.push(data)
     }
-    elem.addEventListener('keyup', submitEvent(sink, {
+    elem.addEventListener('keydown', submitEvent(sink, {
         some: 'data'
     }))
 
-    var ev = Event('keyup', { keyCode: 13 })
+    var ev = Event('keydown', { keyCode: 13 })
     elem.childNodes[0].dispatchEvent(ev)
 
     setImmediate(function () {
