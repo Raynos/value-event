@@ -28,6 +28,11 @@ function handleEvent(ev) {
             (ev.keyCode === ENTER && !ev.shiftKey && ev.type === 'keydown')
         )
 
+    // prevent forms form refreshing page
+    if (ev.type === 'submit') {
+        ev.preventDefualt();
+    }
+
     if (!isValid) {
         return
     }
