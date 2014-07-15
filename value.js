@@ -19,6 +19,10 @@ function handleEvent(ev) {
     var value = getFormData(ev.currentTarget)
     var data = extend(value, this.data)
 
+    if (ev.type === 'submit') {
+        ev.preventDefault();
+    }
+
     if (typeof this.sink === 'function') {
         this.sink(data)
     } else {
