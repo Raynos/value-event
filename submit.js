@@ -14,6 +14,13 @@ function SubmitSinkHandler(sink, data) {
     this.data = data
     this.id = sink.id
     this.type = 'submit'
+
+    if (this.data && 'preventDefault' in this.data) {
+        this.preventDefault = this.data.preventDefault;
+        delete this.data.preventDefault;
+    } else {
+        this.preventDefault = true;
+    }
 }
 
 SubmitSinkHandler.prototype.handleEvent = handleEvent
@@ -45,5 +52,9 @@ function handleEvent(ev) {
         this.sink(data)
     } else {
         this.sink.write(data)
+    }
+
+    if (this.preventDefault) {
+        ev.preventDefault()
     }
 }

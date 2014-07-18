@@ -11,6 +11,13 @@ function ValueEventHandler(sink, data) {
     this.sink = sink
     this.data = data
     this.id = sink.id
+
+    if (this.data && 'preventDefault' in this.data) {
+        this.preventDefault = this.data.preventDefault;
+        delete this.data.preventDefault;
+    } else {
+        this.preventDefault = true;
+    }
 }
 
 ValueEventHandler.prototype.handleEvent = handleEvent
@@ -27,5 +34,9 @@ function handleEvent(ev) {
         this.sink(data)
     } else {
         this.sink.write(data)
+    }
+
+    if (this.preventDefault) {
+        ev.preventDefault()
     }
 }
