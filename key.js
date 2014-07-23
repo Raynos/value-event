@@ -9,7 +9,9 @@ function KeyEventHandler(fn, key, data) {
     this.data = data
     this.key = key
 
-    if (this.data && 'preventDefault' in this.data) {
+    if (this.data && typeof this.data === 'object' &&
+        'preventDefault' in this.data
+    ) {
         this.preventDefault = this.data.preventDefault;
         delete this.data.preventDefault;
     } else {
@@ -24,7 +26,7 @@ function handleEvent(ev) {
         this.fn(this.data)
     }
 
-    if (this.preventDefault) {
+    if (this.preventDefault && ev.preventDefault) {
         ev.preventDefault()
     }
 }
