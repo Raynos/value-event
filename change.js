@@ -1,6 +1,11 @@
 var extend = require('xtend')
 var getFormData = require('form-data-set/element')
 
+var VALID_CHANGE = ['checkbox', 'file'];
+var VALID_INPUT = ['color', 'date', 'datetime', 'datetime-local', 'email',
+    'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'time',
+    'url', 'week'];
+
 module.exports = ChangeSinkHandler
 
 function ChangeSinkHandler(sink, data) {
@@ -29,10 +34,8 @@ function handleEvent(ev) {
     var target = ev.target
 
     var isValid =
-        (ev.type === 'change' && target.type === 'checkbox') ||
-        (ev.type === 'input' && target.type === 'text') ||
-        (ev.type === 'change' && target.type === 'range') ||
-        (ev.type === 'change' && target.type === 'file')
+        (ev.type === 'input' && VALID_INPUT.indexOf(target.type) !== -1) ||
+        (ev.type === 'change' && VALID_CHANGE.indexOf(target.type) !== -1);
 
     if (!isValid) {
         return
