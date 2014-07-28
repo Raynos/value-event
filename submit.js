@@ -38,9 +38,9 @@ function handleEvent(ev) {
             (ev.keyCode === ENTER && ev.type === 'keydown')
         )
 
-    // prevent forms form refreshing page
+    // prevent forms from refreshing page
     if (ev.type === 'submit') {
-        ev.preventDefualt();
+        ev.preventDefault();
     }
 
     if (!isValid) {
