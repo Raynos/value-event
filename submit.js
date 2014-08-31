@@ -1,6 +1,8 @@
 var extend = require('xtend')
 var getFormData = require('form-data-set/element')
 
+var setPreventDefault = require('./prevent-default.js');
+
 var ENTER = 13
 
 module.exports = SubmitSinkHandler
@@ -14,14 +16,7 @@ function SubmitSinkHandler(sink, data) {
     this.data = data
     this.type = 'submit'
 
-    if (this.data && typeof this.data === 'object' &&
-        'preventDefault' in this.data
-    ) {
-        this.preventDefault = this.data.preventDefault;
-        delete this.data.preventDefault;
-    } else {
-        this.preventDefault = true;
-    }
+    setPreventDefault(this, this.data)
 }
 
 SubmitSinkHandler.prototype.handleEvent = handleEvent

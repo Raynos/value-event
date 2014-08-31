@@ -1,3 +1,5 @@
+var setPreventDefault = require('./prevent-default.js');
+
 module.exports = KeyEventHandler
 
 function KeyEventHandler(fn, key, data) {
@@ -9,14 +11,7 @@ function KeyEventHandler(fn, key, data) {
     this.data = data
     this.key = key
 
-    if (this.data && typeof this.data === 'object' &&
-        'preventDefault' in this.data
-    ) {
-        this.preventDefault = this.data.preventDefault;
-        delete this.data.preventDefault;
-    } else {
-        this.preventDefault = true;
-    }
+    setPreventDefault(this, this.data)
 }
 
 KeyEventHandler.prototype.handleEvent = handleEvent

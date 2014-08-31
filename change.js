@@ -1,6 +1,8 @@
 var extend = require('xtend')
 var getFormData = require('form-data-set/element')
 
+var setPreventDefault = require('./prevent-default.js');
+
 var VALID_CHANGE = ['checkbox', 'file'];
 var VALID_INPUT = ['color', 'date', 'datetime', 'datetime-local', 'email',
     'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'time',
@@ -17,14 +19,7 @@ function ChangeSinkHandler(sink, data) {
     this.data = data
     this.type = 'change'
 
-    if (this.data && typeof this.data === 'object' &&
-        'preventDefault' in this.data
-    ) {
-        this.preventDefault = this.data.preventDefault;
-        delete this.data.preventDefault;
-    } else {
-        this.preventDefault = true;
-    }
+    setPreventDefault(this, this.data)
 }
 
 ChangeSinkHandler.prototype.handleEvent = handleEvent

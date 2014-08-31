@@ -1,3 +1,5 @@
+var setPreventDefault = require('./prevent-default.js');
+
 module.exports = SinkEventHandler
 
 function SinkEventHandler(sink, data) {
@@ -8,14 +10,7 @@ function SinkEventHandler(sink, data) {
     this.sink = sink
     this.data = data
 
-    if (this.data && typeof this.data === 'object' &&
-        'preventDefault' in this.data
-    ) {
-        this.preventDefault = this.data.preventDefault;
-        delete this.data.preventDefault;
-    } else {
-        this.preventDefault = true;
-    }
+    setPreventDefault(this, this.data)
 }
 
 SinkEventHandler.prototype.handleEvent = handleEvent
