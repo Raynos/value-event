@@ -32,6 +32,9 @@ function handleEvent(ev) {
         (ev.type === 'change' && VALID_CHANGE.indexOf(target.type) !== -1);
 
     if (!isValid) {
+        if (ev.startPropagation) {
+            ev.startPropagation()
+        }
         return
     }
 
