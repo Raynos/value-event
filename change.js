@@ -16,7 +16,6 @@ function ChangeSinkHandler(sink, data) {
     this.sink = sink
     this.data = data
     this.type = 'change'
-    this.id = sink.id
 
     if (this.data && typeof this.data === 'object' &&
         'preventDefault' in this.data

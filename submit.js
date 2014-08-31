@@ -12,7 +12,6 @@ function SubmitSinkHandler(sink, data) {
 
     this.sink = sink
     this.data = data
-    this.id = sink.id
     this.type = 'submit'
 
     if (this.data && typeof this.data === 'object' &&

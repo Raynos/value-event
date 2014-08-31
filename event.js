@@ -6,7 +6,6 @@ function SinkEventHandler(sink, data) {
     }
 
     this.sink = sink
-    this.id = sink.id
     this.data = data
 
     if (this.data && typeof this.data === 'object' &&
