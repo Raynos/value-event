@@ -1,3 +1,5 @@
+var Delegator = require('dom-delegator')
+
 module.exports = BaseEvent
 
 function BaseEvent(lambda) {
@@ -13,10 +15,27 @@ function BaseEvent(lambda) {
 
         setPreventDefault(handler, handler.opts);
 
+        if (fn && fn.type === 'dom-delegator-handle') {
+            return Delegator().transformHandle(fn, 
+                handleLambda.bind(handler))
+        }
+
         return handler;
     }
 
+    function handleLambda(ev) {
+        if (this.preventDefault && ev.preventDefault) {
+            ev.preventDefault()
+        }
+
+        return lambda.call(this, ev)
+    }
+
     function handleEvent(ev) {
+        if (this.preventDefault && ev.preventDefault) {
+            ev.preventDefault()
+        }
+
         var value = lambda.call(this, ev)
         if (!value) {
             return
@@ -26,10 +45,6 @@ function BaseEvent(lambda) {
             this.fn(value)
         } else {
             this.fn.write(value)
-        }
-
-        if (this.preventDefault && ev.preventDefault) {
-            ev.preventDefault()
         }
     }
 }
