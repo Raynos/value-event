@@ -1,22 +1,8 @@
-var setPreventDefault = require('./prevent-default.js');
+var BaseEvent = require('./base-event.js');
 
-module.exports = ClickEventHandler;
+module.exports = BaseEvent(clickLambda);
 
-function ClickEventHandler(fn, opts, data) {
-    if (!(this instanceof ClickEventHandler)) {
-        return new ClickEventHandler(fn, opts, data)
-    }
-
-    this.fn = fn
-    this.opts = opts || {}
-    this.data = data
-
-    setPreventDefault(this, this.opts)
-}
-
-ClickEventHandler.prototype.handleEvent = handleEvent
-
-function handleEvent(ev) {
+function clickLambda(ev) {
     var opts = this.opts;
 
     if (!opts.ctrl && ev.ctrlKey) {
@@ -31,10 +17,5 @@ function handleEvent(ev) {
         return;
     }
 
-    var handler = this.fn;
-    handler(this.data);
-
-    if (this.preventDefault && ev.preventDefault) {
-        ev.preventDefault();
-    }
+    return this.data;
 }
