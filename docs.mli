@@ -1,14 +1,24 @@
+import { Handle } from "dom-delegator"
+
 type EventHandler : {
     handleEvent : (DOMEvent) => void
 }
 
 type HigherEventFunction<T <: Object> : (
-    fn: (S) => void,
-    data?: S | null,
-    opts?: {
-        preventDefault?: Boolean
-    } & T
-) => EventHandler
+    (
+        fn: (S) => void,
+        data?: S | null,
+        opts?: {
+            preventDefault?: Boolean
+        } & T
+    ) => EventHandler) |
+    (
+        handle: Handle<S>,
+        data?: S | null,
+        opts?: {
+            preventDefault?: Boolean
+        } & T
+    ) => Handle<DOMEvent>
 
 value-event/click : HigherEventFunction<{
     ctrl?: Boolean,
