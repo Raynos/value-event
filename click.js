@@ -17,5 +17,9 @@ function clickLambda(ev) {
         return;
     }
 
+    if (this.opts.preventDefault && ev.preventDefault) {
+        ev.preventDefault();
+    }
+
     return this.data;
 }

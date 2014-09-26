@@ -28,5 +28,9 @@ function submitLambda(ev) {
     var value = getFormData(ev.currentTarget)
     var data = extend(value, this.data)
 
+    if (ev.preventDefault) {
+        ev.preventDefault();
+    }
+
     return data;
 }

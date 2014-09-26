@@ -17,9 +17,10 @@
     "email": "raynos2@gmail.com"
   },
   "dependencies": {
-    "dom-delegator": "^9.2.0",
+    "dom-delegator": "^9.2.2",
     "dom-walk": "^0.1.0",
     "form-data-set": "^1.1.1",
+    "global": "^4.2.1",
     "xtend": "^2.2.0"
   },
   "devDependencies": {

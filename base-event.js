@@ -13,10 +13,8 @@ function BaseEvent(lambda) {
             handleEvent: handleEvent
         }
 
-        setPreventDefault(handler, handler.opts);
-
         if (fn && fn.type === 'dom-delegator-handle') {
-            return Delegator().transformHandle(fn, 
+            return Delegator().transformHandle(fn,
                 handleLambda.bind(handler))
         }
 
@@ -24,18 +22,10 @@ function BaseEvent(lambda) {
     }
 
     function handleLambda(ev) {
-        if (this.preventDefault && ev.preventDefault) {
-            ev.preventDefault()
-        }
-
         return lambda.call(this, ev)
     }
 
     function handleEvent(ev) {
-        if (this.preventDefault && ev.preventDefault) {
-            ev.preventDefault()
-        }
-
         var value = lambda.call(this, ev)
         if (!value) {
             return
@@ -46,16 +36,5 @@ function BaseEvent(lambda) {
         } else {
             this.fn.write(value)
         }
-    }
-}
-
-function setPreventDefault(obj, data) {
-    if (data && typeof data === 'object' &&
-        'preventDefault' in data
-    ) {
-        obj.preventDefault = data.preventDefault;
-        delete data.preventDefault;
-    } else {
-        obj.preventDefault = true;
     }
 }
