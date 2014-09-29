@@ -39,8 +39,8 @@ test('can add (handle) event', function (assert) {
     document.body.appendChild(elem)
 
     var values = []
-    var d = Delegator() // listen to all the things
-    var handle = d.allocateHandle(function (data) {
+    Delegator() // listen to all the things
+    var handle = Delegator.allocateHandle(function (data) {
         values.push(['fn', data])
     })
     DataSet(elem).click = event(handle, {

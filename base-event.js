@@ -14,7 +14,7 @@ function BaseEvent(lambda) {
         }
 
         if (fn && fn.type === 'dom-delegator-handle') {
-            return Delegator().transformHandle(fn,
+            return Delegator.transformHandle(fn,
                 handleLambda.bind(handler))
         }
 
