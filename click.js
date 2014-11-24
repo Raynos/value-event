@@ -2,7 +2,7 @@ var BaseEvent = require('./base-event.js');
 
 module.exports = BaseEvent(clickLambda);
 
-function clickLambda(ev) {
+function clickLambda(ev, broadcast) {
     var opts = this.opts;
 
     if (!opts.ctrl && ev.ctrlKey) {
@@ -21,5 +21,5 @@ function clickLambda(ev) {
         ev.preventDefault();
     }
 
-    return this.data;
+    broadcast(this.data);
 }

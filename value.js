@@ -5,9 +5,9 @@ var BaseEvent = require('./base-event.js');
 
 module.exports = BaseEvent(valueLambda);
 
-function valueLambda(ev) {
+function valueLambda(ev, broadcast) {
     var value = getFormData(ev.currentTarget)
     var data = extend(value, this.data)
 
-    return data;
+    broadcast(data);
 }

@@ -7,7 +7,7 @@ var ENTER = 13
 
 module.exports = BaseEvent(submitLambda);
 
-function submitLambda(ev) {
+function submitLambda(ev, broadcast) {
     var target = ev.target
 
     var isValid =
@@ -32,5 +32,5 @@ function submitLambda(ev) {
         ev.preventDefault();
     }
 
-    return data;
+    broadcast(data);
 }

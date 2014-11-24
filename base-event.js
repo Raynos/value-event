@@ -21,20 +21,20 @@ function BaseEvent(lambda) {
         return handler;
     }
 
-    function handleLambda(ev) {
-        return lambda.call(this, ev)
+    function handleLambda(ev, broadcast) {
+        return lambda.call(this, ev, broadcast)
     }
 
     function handleEvent(ev) {
-        var value = lambda.call(this, ev)
-        if (!value) {
-            return
-        }
+        var self = this
+        lambda.call(self, ev, broadcast)
 
-        if (typeof this.fn === 'function') {
-            this.fn(value)
-        } else {
-            this.fn.write(value)
+        function broadcast(value) {
+            if (typeof self.fn === 'function') {
+                self.fn(value)
+            } else {
+                self.fn.write(value)
+            }
         }
     }
 }

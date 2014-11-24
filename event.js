@@ -2,6 +2,6 @@ var BaseEvent = require('./base-event.js');
 
 module.exports = BaseEvent(eventLambda);
 
-function eventLambda(ev) {
-    return this.data;
+function eventLambda(ev, broadcast) {
+    broadcast(this.data);
 }

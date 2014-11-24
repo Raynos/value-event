@@ -10,7 +10,7 @@ var VALID_INPUT = ['color', 'date', 'datetime', 'datetime-local', 'email',
 
 module.exports = BaseEvent(changeLambda);
 
-function changeLambda(ev) {
+function changeLambda(ev, broadcast) {
     var target = ev.target
 
     var isValid =
@@ -27,5 +27,5 @@ function changeLambda(ev) {
     var value = getFormData(ev.currentTarget)
     var data = extend(value, this.data)
 
-    return data
+    broadcast(data)
 }
