@@ -40,7 +40,7 @@ elem.querySelector('input.name')
 
 ## Example (change)
 
-The cahnge event happens when form elements change
+The change event happens when form elements change
 
 For example:
 
