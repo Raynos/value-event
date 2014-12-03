@@ -22,11 +22,20 @@ function BaseEvent(lambda) {
     }
 
     function handleLambda(ev, broadcast) {
+        if (this.opts.startPropagation && ev.startPropagation) {
+            ev.startPropagation();
+        }
+
         return lambda.call(this, ev, broadcast)
     }
 
     function handleEvent(ev) {
         var self = this
+
+        if (self.opts.startPropagation && ev.startPropagation) {
+            ev.startPropagation()
+        }
+
         lambda.call(self, ev, broadcast)
 
         function broadcast(value) {
