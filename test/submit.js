@@ -72,3 +72,37 @@ test('can add change (function) event', function (assert) {
         assert.end()
     })
 })
+
+test('submit events in a form', function (assert) {
+    var elem = h('form', null, [
+        h('input', {
+            name: 'foo',
+            value: 'bar',
+            type: 'text'
+        })
+    ])
+    document.body.appendChild(elem)
+    var input = EventSinks('', [
+        'someEvent'
+    ])
+
+    var values = []
+    var sink = function (data) {
+        values.push(data)
+    }
+    elem.addEventListener('submit', submitEvent(sink, {
+        some: 'data'
+    }))
+
+    var ev = Event('submit', { keyCode: 13 })
+    elem.dispatchEvent(ev)
+
+    setImmediate(function () {
+        assert.equal(values.length, 1)
+        assert.equal(values[0].some, 'data')
+        assert.equal(values[0].foo, 'bar')
+
+        document.body.removeChild(elem)
+        assert.end()
+    })
+})

@@ -11,6 +11,7 @@ function submitLambda(ev, broadcast) {
     var target = ev.target
 
     var isValid =
+        (ev.type === 'submit' && target.tagName === 'FORM') ||
         (ev.type === 'click' && target.tagName === 'BUTTON') ||
         (ev.type === 'click' && target.type === 'submit') ||
         (
