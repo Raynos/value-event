@@ -3,7 +3,7 @@ var getFormData = require('form-data-set/element')
 
 var BaseEvent = require('./base-event.js')
 
-var VALID_CHANGE = ['checkbox', 'file'];
+var VALID_CHANGE = ['checkbox', 'file', 'select-multiple', 'select-one'];
 var VALID_INPUT = ['color', 'date', 'datetime', 'datetime-local', 'email',
     'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'time',
     'url', 'week'];
