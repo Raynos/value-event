@@ -8,7 +8,7 @@ function BaseEvent(lambda) {
     function EventHandler(fn, data, opts) {
         var handler = {
             fn: fn,
-            data: data || {},
+            data: typeof data != 'undefined' ? data : {},
             opts: opts || {},
             handleEvent: handleEvent
         }
