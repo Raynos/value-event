@@ -107,3 +107,38 @@ test('can add change event on a select', function (assert) {
         assert.end()
     })
 })
+
+test('can add change event on a textarea', function (assert) {
+    var elem = h('div', null, [
+        h('textarea', {
+            type: 'textarea',
+            name: 'foo',
+            value: 'bar'
+        })
+    ])
+    document.body.appendChild(elem)
+    var input = EventSinks('', [
+        'someEvent'
+    ])
+
+    var values = []
+    var sink = input.sinks.someEvent
+    input.events.someEvent(function (data) {
+        values.push(data)
+    })
+    elem.addEventListener('input', changeEvent(sink, {
+        some: 'data'
+    }))
+
+    var ev = Event('input')
+    elem.childNodes[0].dispatchEvent(ev)
+
+    setImmediate(function () {
+        assert.equal(values.length, 1)
+        assert.equal(values[0].some, 'data')
+        assert.equal(values[0].foo, 'bar')
+
+        document.body.removeChild(elem)
+        assert.end()
+    })
+})
